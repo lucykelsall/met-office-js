@@ -6,22 +6,16 @@ const port = 3000
 
 app.use(express.static('frontend'));
 
-app.post('/', function (req, res, next) {
-  response = {
-
-  }
-})
-
-app.get('/', (req, res) => {
+app.get('/forecast', (req, res) => {
   fetch('http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/sitelist?key=dd89d98f-dc78-4ec5-9bc4-ec5ba68ee17b')        
   .then(response => response.json())
   .then(data => {
     // To display all valid location names
-    for (let i = 0; i < data.Locations.Location.length; i++) {
-    console.log(data.Locations.Location[i].name);
-    }
+    //for (let i = 0; i < data.Locations.Location.length; i++) {
+    //console.log(data.Locations.Location[i].name);
+   //}
     // Ask user to input a valid location name
-    const userQuery = readlineSync.question('Please enter a location name: ');
+    //const userQuery = readlineSync.question('Please enter a location name: ');
     // Check user input against list of location names
     for (let i = 0; i < data.Locations.Location.length; i++) {
       if (userQuery === data.Locations.Location[i].name) 
@@ -37,7 +31,6 @@ app.get('/', (req, res) => {
 }
 })
 })
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
