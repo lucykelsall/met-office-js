@@ -6,6 +6,12 @@ const port = 3000
 
 app.use(express.static('frontend'));
 
+app.post('/', function (req, res, next) {
+  response = {
+
+  }
+})
+
 app.get('/', (req, res) => {
   fetch('http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/sitelist?key=dd89d98f-dc78-4ec5-9bc4-ec5ba68ee17b')        
   .then(response => response.json())
